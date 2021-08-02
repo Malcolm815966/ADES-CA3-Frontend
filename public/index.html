@@ -1,0 +1,359 @@
+<!-- Class: DIT/FT/1B/04
+Admission Number: p2020994
+Name: Malcolm Ng -->
+
+<!DOCTYPE html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+
+</head>
+
+
+<body
+  style="background-image: url(http://localhost:3001/image/background.jpg); background-size:cover; overflow-y: scroll;">
+
+  <!-- Page Title -->
+  <div class="d-flex justify-content-center"
+    style="border-bottom-style: solid; border-color: grey;background-color: #47476b; text-align:center; font-size: 75px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <p style="margin: 0; display: inline; color: red; font-weight: bold;">SP&nbsp;</p>
+    <p style="margin: 0; display: inline; color: white; font-weight: bold;">Games</p>
+  </div>
+
+  <header
+    style="background-color: #47476b; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+
+    <!-- Navigation Bar -->
+    <button style="background-color: transparent; border:transparent" type="button" class="btn btn-primary"
+      onclick="goBacktoGame()">
+      <i class="fa fa-gamepad" style="color: white; font-size: large;"> All Games</i>
+    </button>
+
+    <button style="background-color: transparent; border:transparent" type="button" class="btn btn-primary">
+      <i class="fa fa-user-circle" style="color: white; font-size: large;"> Profile</i>
+    </button>
+
+    <button id="addGamesNav" style="background-color: transparent; border:transparent" type="button"
+      class="btn btn-primary" onclick="goToAddGamesPage()">
+      <i class="fa fa-plus" style="color: white; font-size: large;"> Add Games</i>
+    </button>
+
+    <button id="addCategoriesNav" style="background-color: transparent; border:transparent" type="button"
+      class="btn btn-primary" onclick="goToAddCategoriesPage()">
+      <i class="fa fa-file-text" style="color: white; font-size: large;"> Add Categories</i>
+    </button>
+
+    <!-- Buttons to trigger modal -->
+    <button style="background-color: transparent; border:transparent" type="button" class="btn btn-primary"
+      data-toggle="modal" data-target="#loginModal" id="loginNavButton">
+      <i class="fa fa-key" style="color: white; font-size: large;"> Login</i>
+    </button>
+
+    <button style="background-color: transparent; border:transparent" type="button" class="btn btn-primary"
+      data-toggle="modal" data-target="#logoutModal" id="logoutNavButton">
+      <i class="fa fa-sign-out" style="color: white; font-size: large;"> Log out</i>
+    </button>
+  </header>
+
+  <!-- Search Buttons and Input Boxes -->
+  <div class="search-group d-flex justify-content-center" style="margin-top: 20px;">
+    <div class="form-group" style="width: 30%; float: left; margin-right: 25px">
+      <input type="text" class="form-control" placeholder="Search for game title..." id="searchByGameTitle">
+    </div>
+    <div class="form-group row" style="width: 30%; float: left; margin-left: 25px">
+      <label for="searchByMaxPrice" class="col-4" style="margin-top: 5px">Max Price:</label>
+      <input type="text" class="form-control col-6" placeholder="Search for max price..." id="searchByMaxPrice">
+    </div>
+    <button style="background-color: #7575a3; border:transparent; height:min-content; color: white; font-weight: bold;"
+      type="button" class="btn btn-primary" id="searchButton">Search
+    </button>
+  </div>
+
+  <!-- Search by Platform Dropdown -->
+  <div id="displayUniquePlatforms" class="d-flex justify-content-center" style="margin-top: 10px;">
+    <label for="searchByPlatforms">Search by platform:&nbsp;</label>
+    <select name="searchByPlatforms" id="searchByPlatforms"
+      style="margin-bottom: 20px; width: 800px; border-style: solid; border-color: rgba(128, 128, 128, 0.466);">
+      <option value="All">All</option>
+    </select>
+  </div>
+
+  <!-- Display All Games -->
+  <div class="container d-flex" style="justify-content: center;">
+    <div class="row" id="gameList">
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="login-form">
+            <form action="">
+              <h2 class="text-center">Login</h2>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Email" required="required">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="pwd" placeholder="Password" required="required">
+              </div>
+              <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary Clear" id="loginModalClear">Clear</button>
+                <button type="submit" class="btn btn-primary" id="loginModalLogin">Log in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="login-form">
+            <form action="">
+              <h5 class="text-center">Are you sure you want to log out?</h5>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="logoutModalLogout">Log out</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Goes back to Games main page when Games button is clicked -->
+<script>
+  function goBacktoGame() {
+    window.localStorage.removeItem("gameid");
+    window.location.reload();
+  }
+</script>
+
+<!-- Goes to addGames.html page -->
+<script>
+  function goToAddGamesPage() {
+    window.location.assign("http://localhost:3001/addGames.html")
+  }
+</script>
+
+<!-- Goes to addCategories.html page -->
+<script>
+  function goToAddCategoriesPage() {
+    window.location.assign("http://localhost:3001/addCategories.html")
+  }
+</script>
+
+<!-- Hide and Show buttons depending on whether user is logged in (also depends on user role) or not -->
+<script>
+  if (localStorage.getItem('type') == null) {
+    $("#loginNavButton").show();
+    $("#logoutNavButton").hide();
+    $("#addGamesNav").hide();
+    $("#addCategoriesNav").hide();
+  } else if (localStorage.getItem('type') == "Customer") {
+    $("#loginNavButton").hide();
+    $("#logoutNavButton").show();
+    $("#addGamesNav").hide();
+    $("#addCategoriesNav").hide();
+  } else if (localStorage.getItem('type') == "Admin") {
+    $("#loginNavButton").hide();
+    $("#logoutNavButton").show();
+    $("#addGamesNav").show();
+    $("#addCategoriesNav").show();
+  }
+</script>
+
+<!-- Clear Local Storage login data when user logs out -->
+<script>
+  $("#logoutModalLogout").click(function (event) {
+    window.localStorage.clear();
+    window.location.assign("http://localhost:3001");
+  });
+</script>
+
+<!-- Login, verify for correct email and password -->
+<script>
+  $(document).ready(function () {
+    $("#loginModalLogin").click(function () {
+      var email = $('#email').val();
+      var pwd = $('#pwd').val();
+      var data = "{\"email\":\"" + email + "\", \"password\":\"" + pwd + "\"}";
+      console.log(data);
+      $.ajax({
+        url: 'http://localhost:3000/user/login',
+        type: 'POST',
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data, textStatus, xhr) {
+          if (data != null) {
+            console.log(data)
+            var result = JSON.parse(data.UserData);
+            localStorage.setItem('Token', data.token);
+            localStorage.setItem('Username', result.username);
+            localStorage.setItem('userid', result.userid);
+            localStorage.setItem('type', result.type); // just to check for user type and hide and show buttons accordingly, not for adding games etc
+            $("#loginNavButton").hide();
+            $("#logoutNavButton").show();
+            if (localStorage.getItem("type") == "Customer") {
+              $("#addGamesNav").hide();
+              $("#addCategoriesNav").hide();
+            } else if (localStorage.getItem("type") == "Admin") {
+              $("#addGamesNav").show();
+              $("#addCategoriesNav").show();
+            }
+            $("#loginModal").modal('hide');
+          } else {
+            console.log("Error");
+          }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+          console.log('Error in Operation');
+          alert("You have entered the wrong email or password.\nPlease try again.");
+        }
+      });
+      return false;
+    });
+  });
+</script>
+
+<!-- Display ALL platforms from database -->
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: 'http://localhost:3000/displayAllPlatforms',
+      type: 'GET',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data, textStatus, xhr) {
+        data.forEach((ele) => {
+          $('#searchByPlatforms').append(`<option value="${ele.platform}">${ele.platform}</option>`);
+        });
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        console.log('Error in Operation');
+      }
+    });
+    return false;
+  });
+</script>
+
+<!-- Stores gameid in localStorage and goes to details.html page -->
+<script>
+  function goToDetailsPage(gameid) {
+    window.localStorage.setItem("gameid", gameid)
+    window.location.assign("http://localhost:3001/details.html")
+  }
+</script>
+
+<!-- Display ALL games from database -->
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: 'http://localhost:3000/displayAllGames',
+      type: 'GET',
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data, textStatus, xhr) {
+        data.forEach((ele) => {
+          $('#gameList').append(`<div class="col-sm-12 col-md-6 col-lg-4" style="text-align: center;">
+        <img src="http://localhost:3001/image/${ele.image_file}" class="img-thumbnail"
+          style="height: 200px; width: max-content;">
+        <h5>${ele.title}</h5>
+        <p style="margin: 0; display: inline; color: red; font-weight: bold; font-size: 20px">Price:&nbsp;&nbsp;</p>
+        <p style="margin: 0; display: inline; color: grey; font-weight: bold;">$${ele.price}</p>
+        <div class="container d-flex" style="justify-content: center">
+          <div class="row">
+            <button id="${ele.gameid}" style="background-color: #47476b; border:transparent; display: block; margin-bottom: 15px" type="button" class="btn btn-primary" onclick="goToDetailsPage(this.id)">
+              <i class="fa fa-info-circle" style="color: white; font-size: large;"> Details</i>
+            </button>
+          </div>
+        </div>
+      </div>`);
+        });
+      },
+      error: function (xhr, textStatus, errorThrown) {
+        console.log('Error in Operation');
+      }
+    });
+    return false;
+  });
+</script>
+
+<!-- Searches Game by Name, Price and Platform -->
+<script>
+  $(document).ready(function () {
+    $("#searchButton").click(function () {
+      var title = document.getElementById("searchByGameTitle").value;
+      var price = document.getElementById("searchByMaxPrice").value;
+      var platform = document.getElementById("searchByPlatforms").selectedOptions[0].value;
+
+      if (platform == "All") {
+        platform = "";
+      }
+
+      var requestBody = { title: title, price: price, platform: platform }
+
+      $.ajax({
+        url: 'http://localhost:3000/searchForGame/' + JSON.stringify(requestBody),
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data, textStatus, xhr) {
+          var result = "";
+          data.forEach((ele) => {
+            result += `<div class="col-sm-12 col-md-6 col-lg-4" style="text-align: center;">
+        <img src="http://localhost:3001/image/${ele.image_file}" class="img-thumbnail"
+          style="height: 200px; width: max-content;">
+        <h5>${ele.title}</h5>
+        <p style="margin: 0; display: inline; color: red; font-weight: bold; font-size: 20px">Price:&nbsp;&nbsp;</p>
+        <p style="margin: 0; display: inline; color: grey; font-weight: bold;">$${ele.price}</p>
+        <div class="container d-flex" style="justify-content: center">
+          <div class="row">
+            <button id="${ele.gameid}" style="background-color: #47476b; border:transparent; display: block; margin-bottom: 15px" type="button" class="btn btn-primary" onclick="goToDetailsPage(this.id)">
+              <i class="fa fa-info-circle" style="color: white; font-size: large;"> Details</i>
+            </button>
+          </div>
+        </div>
+      </div>`});
+          $("#gameList").html(result);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+          console.log('Error in Operation');
+        }
+      });
+      return false;
+    });
+  });
+</script>
+
+</html>
