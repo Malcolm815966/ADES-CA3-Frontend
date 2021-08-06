@@ -204,7 +204,7 @@ Name: Malcolm Ng -->
       var data = "{\"email\":\"" + email + "\", \"password\":\"" + pwd + "\"}";
       console.log(data);
       $.ajax({
-        url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/user/login',
+        url: 'https://ades-ca3-backendserver.herokuapp.com/user/login',
         type: 'POST',
         data: data,
         contentType: "application/json; charset=utf-8",
@@ -244,7 +244,7 @@ Name: Malcolm Ng -->
 <script>
   $(document).ready(function () {
     $.ajax({
-      url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayGameDetails/' + localStorage.getItem("gameid"),
+      url: 'https://ades-ca3-backendserver.herokuapp.com/displayGameDetails/' + localStorage.getItem("gameid"),
       type: 'GET',
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -283,7 +283,7 @@ Name: Malcolm Ng -->
 <script>
   $(document).ready(function () {
     $.ajax({
-      url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayGameReviews/' + localStorage.getItem("gameid"),
+      url: 'https://ades-ca3-backendserver.herokuapp.com/displayGameReviews/' + localStorage.getItem("gameid"),
       type: 'GET',
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -324,7 +324,7 @@ Name: Malcolm Ng -->
       if (rating <= 5 && rating > 0 && content != null) {
         var requestBody = { content: content, rating: rating, userid: userid, gameid: gameid }
         $.ajax({
-          url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/addReviews/' + JSON.stringify(requestBody),
+          url: 'https://ades-ca3-backendserver.herokuapp.com/addReviews/' + JSON.stringify(requestBody),
           type: 'POST',
           headers: { "Authorization": "Bearer " + window.localStorage.getItem('Token') },
           contentType: "application/json; charset=utf-8",
