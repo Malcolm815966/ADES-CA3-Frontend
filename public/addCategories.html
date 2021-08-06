@@ -203,7 +203,7 @@ Name: Malcolm Ng -->
             var data = "{\"email\":\"" + email + "\", \"password\":\"" + pwd + "\"}";
             console.log(data);
             $.ajax({
-                url: 'https://ades-ca3-backendserver.herokuapp.com/user/login',
+                url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/user/login',
                 type: 'POST',
                 data: data,
                 contentType: "application/json; charset=utf-8",
@@ -250,7 +250,7 @@ Name: Malcolm Ng -->
             if (catname != null && description != null) {
                 var requestBody = { catname: catname, description: description }
                 $.ajax({
-                    url: 'https://ades-ca3-backendserver.herokuapp.com/addCategories/' + JSON.stringify(requestBody),
+                    url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/addCategories/' + JSON.stringify(requestBody),
                     type: 'POST',
                     headers: { "Authorization": "Bearer " + window.localStorage.getItem('Token') },
                     contentType: "application/json; charset=utf-8",
