@@ -214,7 +214,7 @@ Name: Malcolm Ng -->
       var data = "{\"email\":\"" + email + "\", \"password\":\"" + pwd + "\"}";
       console.log(data);
       $.ajax({
-        url: 'http://localhost:3000/user/login',
+        url: 'https://ades-ca3-backendserver.herokuapp.com/user/login',
         type: 'POST',
         data: data,
         contentType: "application/json; charset=utf-8",
@@ -255,7 +255,7 @@ Name: Malcolm Ng -->
 <script>
   $(document).ready(function () {
     $.ajax({
-      url: 'http://localhost:3000/displayAllCategories',
+      url: 'https://ades-ca3-backendserver.herokuapp.com/displayAllCategories',
       type: 'GET',
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -287,7 +287,7 @@ Name: Malcolm Ng -->
       if (title != null && description != null && price != null && price > 0 && year > 0 && platform != null && year != null) {
         var requestBody = { title: title, description: description, price: price, platform: platform, year: year, categoryid: categoryid, image_file: image_file }
         $.ajax({
-          url: 'http://localhost:3000/addGames/' + JSON.stringify(requestBody),
+          url: 'https://ades-ca3-backendserver.herokuapp.com/addGames/' + JSON.stringify(requestBody),
           type: 'POST',
           headers: { "Authorization": "Bearer " + window.localStorage.getItem('Token') },
           contentType: "application/json; charset=utf-8",
