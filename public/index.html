@@ -209,7 +209,7 @@ Name: Malcolm Ng -->
       var data = "{\"email\":\"" + email + "\", \"password\":\"" + pwd + "\"}";
       console.log(data);
       $.ajax({
-        url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/user/login',
+        url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/user/login',
         type: 'POST',
         data: data,
         contentType: "application/json; charset=utf-8",
@@ -250,7 +250,7 @@ Name: Malcolm Ng -->
 <script>
   $(document).ready(function () {
     $.ajax({
-      url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayAllPlatforms',
+      url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayAllPlatforms',
       type: 'GET',
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -279,7 +279,7 @@ Name: Malcolm Ng -->
 <script>
   $(document).ready(function () {
     $.ajax({
-      url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayAllGames',
+      url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/displayAllGames',
       type: 'GET',
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -324,7 +324,7 @@ Name: Malcolm Ng -->
       var requestBody = { title: title, price: price, platform: platform }
 
       $.ajax({
-        url: 'https://cryptic-headland-94862.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/searchForGame/' + JSON.stringify(requestBody),
+        url: 'https://afternoon-wildwood-65309.herokuapp.com/https://ades-ca3-backendserver.herokuapp.com/searchForGame/' + JSON.stringify(requestBody),
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
